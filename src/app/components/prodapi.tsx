@@ -12,14 +12,14 @@ interface Product {
   dicountPercentage: string;
   tags: string;
   isNew: boolean;
-  productImage: string;
+  productImage?: string; // Made optional to avoid errors
 }
 
-const Prodapi = async (): Promise<Product[]> => {
+const fetchProducts = async (): Promise<Product[]> => {
   const query = `*[_type == "product"]{
     title, _id, price, description,
     dicountPercentage, tags, isNew,
-   
+    "productImage": productImage.asset._ref  
   }`;
 
   return await client.fetch(query);
@@ -29,12 +29,16 @@ const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await Prodapi();
-      setProducts(data);
+    const fetchData = async () => {
+      try {
+        const data = await fetchProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     };
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   return (
@@ -46,11 +50,11 @@ const ProductList = () => {
             key={product.id}
             className="border rounded-lg shadow-md p-4 bg-white"
           >
-            {/* <img
-               src={urlFor(product.productImage).width(300).url()}
-               alt={product.title}
+            <img
+              src={product.productImage ? urlFor(product.productImage).width(300).url() : "/placeholder.jpg"}
+              alt={product.title}
               className="w-full h-48 object-cover rounded-lg"
-            /> */}
+            />
             <h2 className="text-xl font-semibold mt-2">{product.title}</h2>
             <p className="text-gray-600">{product.description}</p>
             <p className="text-lg font-bold mt-2">
@@ -82,4 +86,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
