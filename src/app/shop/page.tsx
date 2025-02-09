@@ -1,36 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa";
-import Image from "next/image";
 import Prodapi from "../components/prodapi";
 
 function shop() {
-  const products = [
-    {
-      name: "Syltherine",
-      des: "Stylish Cafe Chair",
-      price: "Rp 1,500,000",
-      img: "/images/image1.png",
-    },
-    {
-      name: "Leviosa",
-      des: "Stylish Cafe Chair",
-      price: "Rp 2,500,000",
-      img: "/images/image2.png",
-    },
-    {
-      name: "Lolito",
-      des: "Luxary Big Sofa",
-      price: "Rp 3,500,000",
-      img: "/images/image3.png",
-    },
-    {
-      name: "Respira",
-      des: "Outdoor bar table and stool",
-      price: "Rp 500,000",
-      img: "/images/image4.png",
-    },
-  ];
+  
 
   return (
     //main div//
@@ -123,123 +97,7 @@ function shop() {
               </div>
       </div>
       </div>
-      {/* product section grid */}
-      <div className="container w-[1244px]  mx-auto ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="border rounded-lg overflow-hidden shadow-md"
-            >
-              <img
-                src={product.img}
-                alt={product.name}
-                className="w-full h-446 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-[24px]  leading-[28px] font-semibold text-[#3A3A3A] mt-[10px] p-2">
-                  {product.name}
-                </h2>
-                <p className="text-[16px] weight-[500px] leading-[24px] text-[#898989] p-2">
-                  {product.des}
-                </p>
-                <p className="text-[20px] weight-[600px] leading=[30px] text-[#3A3A3A] p-2 ">
-                  {product.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* r2 */}
-      <div className="container w-[1244px]  mx-auto mt-10 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="border rounded-lg overflow-hidden shadow-md"
-            >
-              <img
-                src={product.img}
-                alt={product.name}
-                className="w-full h-446 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-[24px]  leading-[28px] font-semibold text-[#3A3A3A] mt-[10px] p-2">
-                  {product.name}
-                </h2>
-                <p className="text-[16px] weight-[500px] leading-[24px] text-[#898989] p-2">
-                  {product.des}
-                </p>
-                <p className="text-[20px] weight-[600px] leading=[30px] text-[#3A3A3A] p-2 ">
-                  {product.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* r3 */}
-
-      <div className="container w-[1244px]  mx-auto mt-10 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="border rounded-lg overflow-hidden shadow-md"
-            >
-              <img
-                src={product.img}
-                alt={product.name}
-                className="w-full h-446 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-[24px]  leading-[28px] font-semibold text-[#3A3A3A] mt-[10px] p-2">
-                  {product.name}
-                </h2>
-                <p className="text-[16px] weight-[500px] leading-[24px] text-[#898989] p-2">
-                  {product.des}
-                </p>
-                <p className="text-[20px] weight-[600px] leading=[30px] text-[#3A3A3A] p-2 ">
-                  {product.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* r4 */}
-
-      <div className="container w-[1244px]  mx-auto mt-10 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="border rounded-lg overflow-hidden shadow-md"
-            >
-              <img
-                src={product.img}
-                alt={product.name}
-                className="w-full h-446 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-[24px]  leading-[28px] font-semibold text-[#3A3A3A] mt-[10px] p-2">
-                  {product.name}
-                </h2>
-                <p className="text-[16px] weight-[500px] leading-[24px] text-[#898989] p-2">
-                  {product.des}
-                </p>
-                <p className="text-[20px] weight-[600px] leading=[30px] text-[#3A3A3A] p-2 ">
-                  {product.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
+         
       {/* Api Data */}
       <Prodapi/>
     </div>
