@@ -41,10 +41,32 @@ const ProductList = () => {
     fetchData();
   }, []);
 
+
+
+  function TruncatedText({ description }: { description: string }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const maxLength = 100; // Limit for truncation
+  
+    return (
+      <p className="text-gray-600">
+        {isExpanded ? description : `${description.substring(0, maxLength)}...`}
+        {description.length > maxLength && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-blue-500 ml-2"
+          >
+            {isExpanded ? "Read Less" : "Read More"}
+          </button>
+        )} 
+      </p>
+    );
+  }
+  
+  
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="container mx-auto px-4 py-1">
       <h1 className="text-3xl font-bold mb-6 text-center">Products</h1>
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-3 gap-6">
         {products.map((product) => (
           <div
             key={product.id}
@@ -56,7 +78,7 @@ const ProductList = () => {
               className="w-full h-48 object-cover rounded-lg"
             />
             <h2 className="text-xl font-semibold mt-2">{product.title}</h2>
-            <p className="text-gray-600">{product.description}</p>
+            <p className="text-gray-600"> <TruncatedText description={product.description} /></p>
             <p className="text-lg font-bold mt-2">
               ${product.price}{" "}
               <span className="text-red-500 text-sm">
